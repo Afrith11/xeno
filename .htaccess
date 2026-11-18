@@ -1,0 +1,77 @@
+# ========================================================
+# MAISON ÉLAN - Hostinger Shared Hosting Apache Config
+# Clean URLs, Security Headers, Gzip Compression & Caching
+# ========================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Block access to hidden files (.git, .env, etc.)
+    RewriteRule ^(\.git|\.env|database\.sql) - [F,L]
+
+    # Block direct access to config files
+    RewriteRule ^config/ - [F,L]
+
+    # Clean URL Rewriting for SEO
+    # /shop -> shop.php
+    RewriteRule ^shop/?$ shop.php [L,QSA]
+    
+    # /product/ivory-silk-draped-saree -> product.php?slug=ivory-silk-draped-saree
+    RewriteRule ^product/([a-zA-Z0-9_-]+)/?$ product.php?slug=$1 [L,QSA]
+    
+    # /category/sarees -> shop.php?category=sarees
+    RewriteRule ^category/([a-zA-Z0-9_-]+)/?$ shop.php?category=$1 [L,QSA]
+    
+    # /collection/wedding -> shop.php?collection=$1
+    RewriteRule ^collection/([a-zA-Z0-9_-]+)/?$ shop.php?collection=$1 [L,QSA]
+
+    # Clean pages (e.g. /cart -> cart.php, /checkout -> checkout.php)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.php [L,QSA]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Gzip / Brotli Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Browser Caching Headers
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Protect database.sql and .sql files
+<FilesMatch "\.(sql|log|ini|env)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

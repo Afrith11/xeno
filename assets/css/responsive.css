@@ -1,0 +1,466 @@
+/**
+ * MAISON ÉLAN - Responsive & Mobile Layout Styles
+ */
+
+/* ==========================================================
+   Tablets & Medium Screens (max-width: 1024px)
+   ========================================================== */
+@media (max-width: 1024px) {
+    :root {
+        --header-height: 72px;
+    }
+
+    .desktop-navigation {
+        display: none;
+    }
+
+    .mobile-toggle-btn {
+        display: flex;
+    }
+
+    .header-inner {
+        position: relative;
+    }
+
+    .brand-logo-wrap {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .brand-logo {
+        align-items: center;
+    }
+
+    .logo-title {
+        font-size: 1.5rem;
+    }
+
+    .category-editorial-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .category-card {
+        height: 420px;
+    }
+
+    .products-editorial-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px 16px;
+    }
+
+    .split-collection-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .split-image-wrap {
+        height: 480px;
+    }
+
+    .split-content-inner {
+        max-width: 100%;
+    }
+
+    .why-us-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .instagram-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    /* Shop Layout on Tablet */
+    .shop-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-filter-drawer-open {
+        display: inline-flex;
+    }
+
+    .shop-sidebar-filters {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 320px;
+        background-color: var(--ivory-card);
+        z-index: 2200;
+        padding: 30px;
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform var(--transition-smooth);
+        box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+    }
+
+    .shop-sidebar-filters.active {
+        transform: translateX(0);
+    }
+
+    .filters-drawer-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--border-medium);
+    }
+
+    .filters-close-btn {
+        font-size: 1.8rem;
+    }
+
+    .mobile-filter-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 2199;
+        display: none;
+    }
+
+    .mobile-filter-backdrop.active {
+        display: block;
+    }
+
+    /* PDP on Tablet */
+    .product-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .cart-layout-grid,
+    .checkout-form-grid,
+    .account-dashboard-layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+}
+
+/* ==========================================================
+   Mobile Phones (max-width: 768px)
+   ========================================================== */
+@media (max-width: 768px) {
+    .site-container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .announcement-bar {
+        font-size: 0.65rem;
+    }
+
+    .announcement-links {
+        display: none;
+    }
+
+    .announcement-content {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo-title {
+        font-size: 1.35rem;
+    }
+
+    .logo-subtitle {
+        display: none;
+    }
+
+    /* Hero */
+    .hero-section {
+        height: 78vh;
+        min-height: 480px;
+    }
+
+    .hero-headline {
+        font-size: 2.3rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+    }
+
+    .btn-hero {
+        width: 100%;
+    }
+
+    /* Brand Statement */
+    .brand-statement-section {
+        padding: 60px 0;
+    }
+
+    .editorial-quote {
+        font-size: 1.8rem;
+    }
+
+    /* Categories */
+    .category-editorial-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .category-card {
+        height: 340px;
+    }
+
+    /* Product Grid Mobile: 2 columns */
+    .products-editorial-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 12px;
+    }
+
+    .product-card-actions {
+        display: none; /* Mobile taps card directly */
+    }
+
+    .product-title {
+        font-size: 1.05rem;
+    }
+
+    .product-pricing {
+        font-size: 0.88rem;
+    }
+
+    /* Lookbook Mobile */
+    .lookbook-masonry-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+        gap: 12px;
+    }
+
+    .item-wide {
+        grid-column: span 2;
+    }
+
+    /* Testimonials Mobile */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Instagram Mobile */
+    .instagram-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Newsletter Mobile */
+    .newsletter-form-row {
+        flex-direction: column;
+        background: transparent;
+        border: none;
+        gap: 10px;
+    }
+
+    .newsletter-input-field {
+        background-color: #FFFFFF;
+        border: 1px solid var(--border-medium);
+        border-radius: var(--radius-sm);
+    }
+
+    .newsletter-submit-btn {
+        border-radius: var(--radius-sm);
+    }
+
+    /* Footer Mobile */
+    .footer-columns {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 50px 18px;
+    }
+
+    .footer-bottom-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .legal-links {
+        justify-content: center;
+    }
+
+    /* PDP Mobile */
+    .product-gallery {
+        flex-direction: column-reverse;
+    }
+
+    .gallery-thumbs {
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .gallery-thumb-btn {
+        width: 70px;
+        flex-shrink: 0;
+    }
+
+    .purchase-actions-row {
+        flex-direction: column;
+    }
+
+    .btn-wishlist-pdp {
+        width: 100%;
+    }
+
+    .reviews-layout {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cart Table Mobile */
+    .cart-items-table thead {
+        display: none;
+    }
+
+    .cart-row {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 18px 0;
+    }
+
+    .cart-row td {
+        padding: 4px 0;
+        border-bottom: none;
+    }
+
+    .cart-row .td-action {
+        position: absolute;
+        top: 14px;
+        right: 0;
+    }
+
+    .cart-row .td-price {
+        display: none;
+    }
+
+    .cart-mobile-price {
+        display: block;
+    }
+
+    .cart-row .td-qty {
+        margin-top: 10px;
+    }
+
+    /* Form Rows */
+    .form-row-2,
+    .form-row-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .order-ref-banner {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quickview-modal-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   Mobile Menu Drawer
+   ========================================================== */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 85vw;
+    background-color: var(--ivory-card);
+    z-index: 2500;
+    transform: translateX(-100%);
+    transition: transform var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-drawer.active {
+    transform: translateX(0);
+}
+
+.mobile-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.mobile-drawer-brand {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+}
+
+.mobile-drawer-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mobile-nav-list li {
+    margin-bottom: 16px;
+}
+
+.mobile-nav-link {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--charcoal);
+    display: block;
+}
+
+.mobile-nav-link:hover {
+    color: var(--gold-dark);
+    padding-left: 4px;
+}
+
+.mobile-drawer-footer {
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.mobile-footer-btn {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.mobile-footer-link {
+    display: block;
+    font-size: 0.78rem;
+    color: #8C2222;
+    margin-top: 6px;
+}
+
+.mobile-boutique-info {
+    margin-top: 18px;
+    font-size: 0.75rem;
+    color: var(--taupe);
+    line-height: 1.5;
+}

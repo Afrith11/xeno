@@ -1,0 +1,12 @@
+# Environment & system
+.DS_Store
+Thumbs.db
+*.log
+
+# Sensitive environment credentials if created
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
